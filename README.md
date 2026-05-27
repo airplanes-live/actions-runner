@@ -18,8 +18,6 @@ template:
   spec:
     nodeSelector:
       kubernetes.io/arch: amd64
-    imagePullSecrets:
-      - name: ghcr-pull              # see "GHCR access" below
     containers:
       - name: runner                  # ARC requires this name
         image: ghcr.io/airplanes-live/actions-runner:2.334.0
@@ -36,9 +34,9 @@ containerMode:
 
 ## GHCR access
 
-This package is private. ARC pods need an `imagePullSecret` whose token has `read:packages` scope — anonymous pulls fail for private GHCR packages.
+The container package is public — ARC pods pull anonymously without an `imagePullSecret`.
 
-Preflight: `docker pull ghcr.io/airplanes-live/actions-runner:<tag>` from a cluster node using the same credentials before switching Helm values.
+If you later make the package private, add an `imagePullSecret` (with `read:packages` scope) to `template.spec.imagePullSecrets` in the Helm values.
 
 ## Updates
 
