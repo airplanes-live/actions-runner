@@ -2,7 +2,7 @@
 
 Custom GitHub Actions self-hosted runner image for airplanes.live ARC.
 
-Thin layer on top of the official [`ghcr.io/actions/actions-runner`](https://github.com/actions/runner/pkgs/container/actions-runner) base, adding a C toolchain (`build-essential`) so cgo builds (`go test -race`) work without a per-job `apt-get`. The base image ships Docker CLI + Buildx; those are untouched.
+Thin layer on top of the official [`ghcr.io/actions/actions-runner`](https://github.com/actions/runner/pkgs/container/actions-runner) base, adding a C toolchain (`build-essential`) so cgo builds (`go test -race`) work without a per-job `apt-get`, plus the Docker Compose CLI plugin (pinned + checksum-verified) so Compose-based jobs work without a per-job download. The base image ships the Docker CLI + Buildx.
 
 We don't use a community runner image (e.g. `catthehacker/ubuntu`) — single-maintainer supply-chain exposure. A pinned Dockerfile on GitHub's official base keeps us on a patched image we control.
 
