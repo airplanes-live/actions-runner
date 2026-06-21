@@ -4,7 +4,7 @@
 # Compose-based jobs work without a per-job download. Docker-in-Docker for
 # image builds is a separate concern, handled by `containerMode: dind` in the
 # ARC Helm values, not by this image.
-FROM ghcr.io/actions/actions-runner:2.334.0
+FROM ghcr.io/actions/actions-runner:2.335.1
 
 # Docker Compose CLI plugin, pinned + checksum-verified, installed to the global
 # CLI plugin path so `docker compose` resolves for the runner user. The base
